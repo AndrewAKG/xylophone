@@ -4,15 +4,15 @@ import 'package:flutter/material.dart';
 void main() => runApp(XylophoneApp());
 
 class XylophoneApp extends StatelessWidget {
+  final player = AudioCache();
   void playNote(int noteNumber) {
-    final player = AudioCache();
     player.play('note$noteNumber.wav');
   }
 
-  Widget buildNote(var color, int noteNumber) {
+  Expanded buildNote(int noteNumber) {
     return Expanded(
       child: FlatButton(
-        color: color,
+        child: Image.asset('images/step.png'),
         onPressed: () {
           playNote(noteNumber);
         },
@@ -26,16 +26,17 @@ class XylophoneApp extends StatelessWidget {
       home: Scaffold(
         body: SafeArea(
           child: Container(
+            color: Colors.teal.shade900,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                buildNote(Colors.red, 1),
-                buildNote(Colors.yellow, 2),
-                buildNote(Colors.green, 3),
-                buildNote(Colors.blue, 4),
-                buildNote(Colors.indigo, 5),
-                buildNote(Colors.teal, 6),
-                buildNote(Colors.pink, 7),
+                buildNote(1),
+                buildNote(2),
+                buildNote(3),
+                buildNote(4),
+                buildNote(5),
+                buildNote(6),
+                buildNote(7),
               ],
             ),
           ),
